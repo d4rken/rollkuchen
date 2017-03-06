@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Rollkuchen</title>
+</head>
+
+<body>
+<div id="gallery">
+</div>
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link href="bower_components/nanogallery2/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="bower_components/nanogallery2/dist/jquery.nanogallery2.min.js"></script>
+
+<script src="bower_components/firebase/firebase-app.js"></script>
+<script src="bower_components/firebase/firebase-database.js"></script>
+<script src="bower_components/firebase/firebase-storage.js"></script>
+<script>
+    var galleryData = [];
+
+    const gallery = $('#gallery');
+    gallery.bind('contentchanged', function () {
+        gallery.nanogallery2({
+            items: galleryData,
+            locationHash: false,
+            thumbnailWidth: 'auto',
+            thumbnailHeight: 300
+        });
+    });
+
+    var config = {
+        databaseURL: "https://rollkuchen-35448.firebaseio.com",
+        storageBucket: "rollkuchen-35448.appspot.com"
+    };
+    firebase.initializeApp(config);
+
+    var database = firebase.database().ref('image_pool');
+    var imgRef = firebase.storage().ref().child('image_pool');
+
+    database.once('value', function (snapshot) {
+        var cnt = 0;
+        snapshot.val().forEach((obj, index, array) => {
+            Promise.all([
+                imgRef.child(obj.src).getDownloadURL(),
+                imgRef.child(obj.srct).getDownloadURL()
+            ]).then(values => {
+                obj.title = obj.src;
+                obj.src = values[0];
+                obj.srct = values[1];
+                console.log(JSON.stringify(obj));
+                galleryData.push(obj);
+
+                cnt++;
+                if (cnt === array.length) {
+                    $('#gallery').trigger('contentchanged');
+                }
+            });
+        });
+    });
+</script>
+</html>

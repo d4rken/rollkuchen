@@ -1,0 +1,23 @@
+{
+  "name": "Rollkuchen Gallery",
+  "homepage": "https://github.com/d4rken/rollkuchen",
+  "authors": [
+    "darken <darken@darken.eu>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "firebase": "^3.7.0",
+    "firebase-util": "^0.2.5",
+    "nanogallery2": "^1.0.0"
+  }
+}
