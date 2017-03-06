@@ -1,67 +1,116 @@
 <!DOCTYPE HTML>
+<!--
+	Multiverse by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-
 <head>
     <title>Rollkuchen</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <link href="bower_components/nanogallery2/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="bower_components/nanogallery2/dist/jquery.nanogallery2.js"></script>
+
+    <script src="bower_components/firebase/firebase-app.js"></script>
+    <script src="bower_components/firebase/firebase-database.js"></script>
+    <script src="bower_components/firebase/firebase-storage.js"></script>
 </head>
-
 <body>
-<div id="gallery">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="index.html"><strong>Rollkuchen</strong> ¯\_(ツ)_/¯</a></h1>
+        <nav>
+            <ul>
+                <li><a href="#footer" class="icon fa-info-circle">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <div id="gallery">
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer id="footer" class="panel">
+        <div class="inner split">
+            <div>
+                <section>
+                    <h2>Rollkuchen</h2>
+                    <p>Rollkuchen sind ein süßes weltweit beliebtes Gebäck. Sie bestehen in den Hauptzutaten aus einem
+                        süßen gerolltem Teig, Marzipan und Rosinen. Fast immer sind Rollkuchen auch aprikotiert und oder
+                        glasiert, wobei hier die Dosierung zu beachten ist, denn ein optimaler Rollkuchen ist nicht
+                        klebrig.
+                        Varianten mit Persipan existieren und dürfen entsprechend Rollkuchen-Bestimmungen noch offiziell
+                        als solche bezeichnet werden. Varianten mit Füllungen (z.B. Kirschen) oder Zusätzen (z.B.
+                        Streuseln) sind jedoch keine offiziellen Rollkuchen mehr.
+                        Im Volksmund werden Rollkuchen fälschlicherweise auch als Rosinenschnecken bezeichnet.
+                    </p>
+                </section>
+                <!--<section>-->
+                <!--<h2>Follow me on ...</h2>-->
+                <!--<ul class="icons">-->
+                <!--<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>-->
+                <!--<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>-->
+                <!--<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>-->
+                <!--<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>-->
+                <!--<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>-->
+                <!--<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>-->
+                <!--</ul>-->
+                <!--</section>-->
+                <p class="copyright">
+                    Rollkuchen sind super. Design: <a href="http://html5up.net">HTML5 UP</a>+<a
+                        href="http://nanogallery2.nanostudio.org">nanogallery2</a>.
+                </p>
+            </div>
+            <div>
+                <!--<section>-->
+                <!--<h2>Get in touch</h2>-->
+                <!--<form method="post" action="#">-->
+                <!--<div class="field half first">-->
+                <!--<input type="text" name="name" id="name" placeholder="Name"/>-->
+                <!--</div>-->
+                <!--<div class="field half">-->
+                <!--<input type="text" name="email" id="email" placeholder="Email"/>-->
+                <!--</div>-->
+                <!--<div class="field">-->
+                <!--<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>-->
+                <!--</div>-->
+                <!--<ul class="actions">-->
+                <!--<li><input type="submit" value="Send" class="special"/></li>-->
+                <!--<li><input type="reset" value="Reset"/></li>-->
+                <!--</ul>-->
+                <!--</form>-->
+                <!--</section>-->
+            </div>
+        </div>
+    </footer>
+
 </div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.poptrox.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]>
+<script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+<script src="loadrollkuchen.js"></script>
 </body>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link href="bower_components/nanogallery2/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="bower_components/nanogallery2/dist/jquery.nanogallery2.min.js"></script>
-
-<script src="bower_components/firebase/firebase-app.js"></script>
-<script src="bower_components/firebase/firebase-database.js"></script>
-<script src="bower_components/firebase/firebase-storage.js"></script>
-<script>
-    var galleryData = [];
-
-    const gallery = $('#gallery');
-    gallery.bind('contentchanged', function () {
-        gallery.nanogallery2({
-            items: galleryData,
-            locationHash: false,
-            thumbnailWidth: 'auto',
-            thumbnailHeight: 300,
-            thumbnailLabel: {
-                display: false
-            },
-            thumbnailOpenImage: false
-        });
-    });
-
-    var config = {
-        databaseURL: "https://rollkuchen-35448.firebaseio.com",
-        storageBucket: "rollkuchen-35448.appspot.com"
-    };
-    firebase.initializeApp(config);
-
-    var database = firebase.database().ref('image_pool');
-    var imgRef = firebase.storage().ref().child('image_pool');
-
-    database.once('value', function (snapshot) {
-        var cnt = 0;
-        snapshot.val().forEach((obj, index, array) => {
-            Promise.all([
-                imgRef.child(obj.src).getDownloadURL(),
-                imgRef.child(obj.srct).getDownloadURL()
-            ]).then(values => {
-                obj.title = obj.src;
-                obj.src = values[0];
-                obj.srct = values[1];
-                console.log(JSON.stringify(obj));
-                galleryData.push(obj);
-
-                cnt++;
-                if (cnt === array.length) {
-                    $('#gallery').trigger('contentchanged');
-                }
-            });
-        });
-    });
-</script>
 </html>
