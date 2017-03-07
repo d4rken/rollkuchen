@@ -30,7 +30,8 @@ const ngy2data = gallery.nanogallery2('data');
 const instance = gallery.nanogallery2('instance');
 
 database.once('value', function (snapshot) {
-    snapshot.val().forEach(obj => {
+    snapshot.forEach(entry => {
+        const obj = entry.val();
         Promise.all([
             imgRef.child(obj.src).getDownloadURL(),
             imgRef.child(obj.srct).getDownloadURL()
