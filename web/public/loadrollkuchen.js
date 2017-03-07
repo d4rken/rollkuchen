@@ -10,13 +10,20 @@ const imgRef = firebase.storage().ref().child('image_pool');
 const gallery = $("#gallery");
 gallery.nanogallery2({
     items: [],
-    locationHash: false,
+    locationHash: true,
     thumbnailWidth: 'auto',
     thumbnailHeight: 300,
     thumbnailLabel: {
         display: false
     },
-    thumbnailOpenImage: true
+    thumbnailOpenImage: true,
+    viewerToolbar: {
+        display: false
+    },
+    viewerTools: {
+        topLeft: 'pageCounter',
+        topRight: 'closeButton'
+    }
 });
 
 const ngy2data = gallery.nanogallery2('data');
@@ -31,7 +38,7 @@ database.once('value', function (snapshot) {
             const ID = ngy2data.items.length + 1;
             const albumID = '0';
             const title = obj.src;
-            var desc = '';
+            const desc = '';
             const newItem = NGY2Item.New(instance, title, desc, ID, albumID, 'image', '');
 
             newItem.thumbSet(values[1], 0, 0); // w,h
